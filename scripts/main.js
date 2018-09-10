@@ -2,16 +2,9 @@ import {cl, headers} from "https://rawgit.com/stevedoesitall/ditkojs/master/ditk
 
 
 function get_intel() {
-    cl('hi')
-    fetch("http://feed.sailthru.com/ws/feed?id=57291f1b1aa312342f8b456b", {
+    fetch("/server", {
         method: "post",
-        headers: {
-            "Accept" : "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET"
-        },
-        mode: "no-cors"
+        headers: headers,
     })
 
     .then(
@@ -29,7 +22,7 @@ function get_intel() {
         }
     )
     .catch((err) => {
-        alert(err);
+        cl(err);
     });
 }
 
