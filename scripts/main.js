@@ -8,7 +8,7 @@ function get_intel() {
         headers: {
             "Accept" : "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://learninglibrary.herokuapp.com/"
+            "Access-Control-Allow-Origin": "http://learninglibrary.herokuapp.com"
         },
         mode: "cors"
     })
