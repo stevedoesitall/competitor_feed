@@ -10,7 +10,7 @@ function get_intel() {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "http://learninglibrary.herokuapp.com"
         },
-        mode: "cors"
+        mode: "no-cors"
     })
 
     .then(
