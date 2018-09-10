@@ -5,7 +5,11 @@ function get_intel() {
     cl('hi')
     fetch("http://feed.sailthru.com/ws/feed?id=57291f1b1aa312342f8b456b", {
         method: "post",
-        headers: headers,
+        headers: {
+            "Accept" : "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://learninglibrary.herokuapp.com/"
+        },
         mode: "cors"
     })
 
