@@ -15,15 +15,29 @@ function get_intel() {
 
             response.json().then(
                 function(resp_data) {
-                const competitors = Object.keys(resp_data);
-                const length = competitors.length;
-                cl(competitors);
-                    for (let x = 0; x < competitors.length; x++) {
-                        get_id("intel_block").innerHTML += "<h3>" + competitors[x] + "</h3>";
-                        const intel = resp_data[competitors[x]];
+                    const clouds = resp_data.clouds;
+                    const cloud_keys = Object.keys(clouds);
+
+                    const competitors_one = resp_data.competitorsOne;
+                    const competitors_two = resp_data.competitorsTwo;
+                    const competitors = Object.assign(competitors_one, competitors_two);
+                    const competitor_keys = Object.keys(competitors);
+
+                    for (let x = 0; x < cloud_keys.length; x++) {
+                        get_id("clouds").innerHTML += "<h3>" + cloud_keys[x] + "</h3>";
+                        const intel = clouds[cloud_keys[x]];
                         cl(intel.content);
                         intel.content.forEach(content => {
-                            get_id("intel_block").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                            get_id("clouds").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                        });
+                    }
+
+                    for (let x = 0; x < competitor_keys.length; x++) {
+                        get_id("competitors").innerHTML += "<h3>" + competitor_keys[x] + "</h3>";
+                        const intel = competitors[competitor_keys[x]];
+                        cl(intel.content);
+                        intel.content.forEach(content => {
+                            get_id("competitors").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
                         });
                     }
                 }

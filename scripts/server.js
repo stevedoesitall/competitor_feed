@@ -14,7 +14,7 @@ app.use(body_parser.json());
 app.listen(port, () => console.log("Competitor feed app started on port " + port));
 
 app.post("/server", function(req, res) {
-    const url = "http://feed.sailthru.com/ws/feed?id=5b97c7b5071eff34582ce5d4";
+    const url = "http://feed.sailthru.com/ws/feed?id=5b9807ef071eff297b6bb800";
 
     http.get(url, (cb) => {
     const { statusCode } = cb;
