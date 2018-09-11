@@ -10,6 +10,14 @@ h3 {
     margin-bottom: .5em;
 }
 
-#noncloud {
-    margin-top: 1.5em;
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+
+#competitors {
+    margin-left: 2em;
 }
