@@ -15,21 +15,17 @@ function get_intel() {
 
             response.json().then(
                 function(resp_data) {
-                    const email_content = resp_data.email.content;
-                    const mobile_content = resp_data.mobile.content;
-                    const onsite_content = resp_data.onsite.content;
-
-                    email_content.forEach(content => {
-                        get_id("email").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
-                    });
-
-                    mobile_content.forEach(content => {
-                        get_id("mobile").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
-                    });
-
-                    onsite_content.forEach(content => {
-                        get_id("onsite").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
-                    });
+                const competitors = Object.keys(resp_data);
+                const length = competitors.length;
+                cl(competitors);
+                    for (let x = 0; x < competitors.length; x++) {
+                        get_id("intel_block").innerHTML += "<h3>" + competitors[x] + "</h3>";
+                        const intel = resp_data[competitors[x]];
+                        cl(intel.content);
+                        intel.content.forEach(content => {
+                            get_id("intel_block").innerHTML += "<p><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                        });
+                    }
                 }
             )
         }
