@@ -16,6 +16,9 @@ function get_intel() {
                 throw new Error ("Something went wrong. Please try again later.");
             }
 
+            const ignore_array = ["pedestrian.tv", "hypepotamus.com", "/jobs/", ".jobs", "jobs."];
+            const regex = /[^\x00-\x7F]+/g;
+
             response.json().then(
                 function(resp_data) {
                     const clouds = resp_data.clouds;
@@ -31,7 +34,16 @@ function get_intel() {
                         const intel = clouds[cloud_keys[x]];
                         cl(intel.content);
                         intel.content.forEach(content => {
-                            get_id("clouds").innerHTML += "<p class='section'><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                            for (let x = 0; x < ignore_array.length; x++) {
+                                if (content.url.includes(ignore_array[x])) {
+                                    cl(content.url);
+                                    delete content.url;
+                                    break;
+                                }
+                            }
+                            if (content.url && (content.url.indexOf(".com/") != -1 || content.url.indexOf(".co.uk/") != -1 || content.url.indexOf(".net/") != -1 || content.url.indexOf(".org/") != -1) && !content.title.match(regex)) {
+                                get_id("clouds").innerHTML += "<p class='section'><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                            }
                         });
                     }
 
@@ -40,7 +52,16 @@ function get_intel() {
                         const intel = competitors[competitor_keys[x]];
                         cl(intel.content);
                         intel.content.forEach(content => {
-                            get_id("competitors").innerHTML += "<p class='section'><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                            for (let x = 0; x < ignore_array.length; x++) {
+                                if (content.url.includes(ignore_array[x])) {
+                                    cl(content.url);
+                                    delete content.url;
+                                    break;
+                                }
+                            }
+                            if (content.url && (content.url.indexOf(".com/") != -1 || content.url.indexOf(".co.uk/") != -1 || content.url.indexOf(".net/") != -1 || content.url.indexOf(".org/") != -1) && !content.title.match(regex)) {
+                                get_id("competitors").innerHTML += "<p class='section'><a href='" + content.url + "' target='_blank'>" + content.title + "</a></p>"
+                            }
                         });
                     }
                 }

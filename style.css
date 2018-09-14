@@ -21,3 +21,13 @@ h3 {
 #competitors {
     margin-left: 2em;
 }
+
+@media only screen and (max-width: 320px) {
+    .row {
+        display: block;
+    }
+    
+    .column {
+        flex: 100%;
+    }
+}
