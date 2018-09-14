@@ -28,6 +28,10 @@ h3 {
     }
     
     .column {
-        flex: 100%;
+        flex: none;
+    }
+
+    #competitors {
+        margin-left: 0em;
     }
 }
