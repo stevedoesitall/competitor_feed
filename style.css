@@ -34,6 +34,10 @@ h3 {
     .row {
         display: block;
     }
+
+    .hide {
+        display: none;
+    }
     
     .column {
         flex: none;
