@@ -21,6 +21,8 @@ function get_intel() {
 
             response.json().then(
                 function(resp_data) {
+                    get_id("wait_msg").classList.add("hide");
+                    get_id("intel_block").classList.remove("hide");
                     const clouds = resp_data.clouds;
                     const cloud_keys = Object.keys(clouds);
 

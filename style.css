@@ -18,8 +18,16 @@ h3 {
     flex: 50%;
 }
 
+.hide {
+    display: none;
+}
+
 #competitors {
     margin-left: 2em;
+}
+
+#wait_msg {
+    text-align: center;
 }
 
 @media only screen and (max-width: 480px) {
