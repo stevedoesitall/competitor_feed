@@ -16,7 +16,7 @@ function get_intel() {
                 throw new Error ("Something went wrong. Please try again later.");
             }
 
-            const ignore_array = ["pedestrian.tv", "hypepotamus.com", "/jobs/", ".jobs", "jobs."];
+            const ignore_array = ["weei.radio.com", "hypepotamus.com", "/job/", ".job", ".jobs", "/jobs/", ".jobs", "jobs."];
             const regex = /[^\x00-\x7F]+/g;
 
             response.json().then(
